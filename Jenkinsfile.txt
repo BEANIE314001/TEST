@@ -12,7 +12,7 @@ pipeline {
       steps {
         script {
           withKubeConfig([credentialsId: 'dhdo', serverUrl: '192.168.49.2:8443']) {
-          sh 'kubectl apply -f my-kubernetes-directory'
+          sh 'kubectl apply -f *'
             }
         }
       }
