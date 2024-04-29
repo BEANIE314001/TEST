@@ -11,7 +11,8 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "deploymentservice.yml", kubeconfigId: "kubernetes")
+          withKubeConfig([credentialsId: 'kubernetes', serverUrl: '192.168.49.2:8443']) {
+          sh 'kubectl apply -f my-kubernetes-directory'
         }
       }
     }
